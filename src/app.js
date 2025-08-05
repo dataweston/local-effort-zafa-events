@@ -191,8 +191,7 @@ if (invoiceForm.email) {
     };
 
     await emailjs.send(
-      'service_clqjlrd', // 1. Your Service ID // 2. Your Template ID (get this from the EmailJS dashboard)
-      templateParams, // 3. The template parameters object
+      'service_62ytl14', // 1. Your Service ID // 2. Your Template ID (get this from the EmailJS dashboard)
       '8JO0XTTh5R62cNEbP' // 4. Your Public Key (User ID)
     );
     console.log('Email sent successfully');
