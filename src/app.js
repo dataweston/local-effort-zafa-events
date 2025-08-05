@@ -176,28 +176,30 @@ const App = () => {
       const docRef = await addDoc(collection(db, "invoices"), invoiceData);
 
       // Send email if email is provided
-      if (invoiceForm.email) {
-        try {
-          await emailjs.send(
-            'service_clqjlrd', // Replace with your EmailJS service ID
-            {
-              to_email: invoiceForm.email,
-              event_name: event.name,
-              event_date: format(new Date(event.date), 'MMMM d, yyyy'),
-              invoice_number: invoiceData.invoiceNumber,
-              final_cost: finalAmount.toFixed(2),
-              deposit: depositAmount.toFixed(2),
-              balance_due: balanceDue.toFixed(2),
-              notes: invoiceForm.notes,
-            },
-            '8JO0XTTh5R62cNEbP' // Replace with your EmailJS user ID
-          );
-          console.log('Email sent successfully');
-        } catch (emailError) {
-          console.error('Error sending email:', emailError);
-        }
-      }
+if (invoiceForm.email) {
+  try {
+    // Define your template parameters
+    const templateParams = {
+      to_email: invoiceForm.email,
+      event_name: event.name,
+      event_date: format(new Date(event.date), 'MMMM d, yyyy'),
+      invoice_number: invoiceData.invoiceNumber,
+      final_cost: finalAmount.toFixed(2),
+      deposit: depositAmount.toFixed(2),
+      balance_due: balanceDue.toFixed(2),
+      notes: invoiceForm.notes,
+    };
 
+    await emailjs.send(
+      'service_clqjlrd', // 1. Your Service ID // 2. Your Template ID (get this from the EmailJS dashboard)
+      templateParams, // 3. The template parameters object
+      '8JO0XTTh5R62cNEbP' // 4. Your Public Key (User ID)
+    );
+    console.log('Email sent successfully');
+  } catch (emailError) {
+    console.error('Error sending email:', emailError);
+  }
+}
       // Reset form
       setInvoiceForm({
         finalCost: "",
