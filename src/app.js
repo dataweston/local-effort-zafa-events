@@ -180,7 +180,6 @@ const App = () => {
         try {
           await emailjs.send(
             'service_clqjlrd', // Replace with your EmailJS service ID
-            'your_template_id', // Replace with your EmailJS template ID
             {
               to_email: invoiceForm.email,
               event_name: event.name,
@@ -191,7 +190,7 @@ const App = () => {
               balance_due: balanceDue.toFixed(2),
               notes: invoiceForm.notes,
             },
-            'your_user_id' // Replace with your EmailJS user ID
+            '8JO0XTTh5R62cNEbP' // Replace with your EmailJS user ID
           );
           console.log('Email sent successfully');
         } catch (emailError) {
