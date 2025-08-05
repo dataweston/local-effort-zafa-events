@@ -179,7 +179,7 @@ const App = () => {
       if (invoiceForm.email) {
         try {
           await emailjs.send(
-            'your_service_id', // Replace with your EmailJS service ID
+            'service_clqjlrd', // Replace with your EmailJS service ID
             'your_template_id', // Replace with your EmailJS template ID
             {
               to_email: invoiceForm.email,
