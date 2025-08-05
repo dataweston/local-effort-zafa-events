@@ -191,10 +191,10 @@ if (invoiceForm.email) {
     };
 
     await emailjs.send(
-      'service_62ytl14', // 1. Your Service ID // 
-      'template_sp3icre', // 2. Your Template ID (get this from the EmailJS dashboard)
+      '62ytl14', // 1. Your Service ID // 
+      'sp3icre', // 2. Your Template ID (get this from the EmailJS dashboard)
       templateParams, // 3. The template parameters object
-      '8JO0XTTh5R62cNEbP' // 4. Your Public Key (User ID)
+      '8JO0XTTh5R62cNEbP', // 4. Your Public Key (User ID)
     );
     console.log('Email sent successfully');
   } catch (emailError) {
